@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.com.ies.cap.domain.Employee;
 import co.com.ies.cap.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final EmployeeRepository employeeRepository;
-
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Override
     public Employee getEmployeeById(Long id) {

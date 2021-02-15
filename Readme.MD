@@ -33,3 +33,5 @@ TODO:
  [ ] Escribir articulo en medium
  
  [x] publicar los slides en github pages
+ 
+ [ ] vincular devtools con testing para tdd

@@ -39,6 +39,7 @@ class EmployeeRepositoryIntegrationTest {
         //malo
         assertThat(employeeRepository.findByName(alex.getName()).getName())
                 .isEqualTo(alex.getName());
+
         assertEquals(found.getName(), alex.getName());
     }
 

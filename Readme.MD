@@ -16,11 +16,11 @@ EmployeeRestControllerIntegrationTest
 
 TODO:
 
- [ ] Agregar ejemplo de excepciones
+ [X] Agregar ejemplo de excepciones
  
- [ ] Agregar ejemplo con el spy
+ [X] Agregar ejemplo con el spy
  
- [ ] Agregar ejemplo con los argument
+ [X] Agregar ejemplo con los argument
  
  [ ] Agregar una prueba de carga con gatling
  

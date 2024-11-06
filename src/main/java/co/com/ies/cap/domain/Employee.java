@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "person")
@@ -40,5 +41,29 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass () != o.getClass ()) return false;
+
+        Employee employee = (Employee) o;
+        return Objects.equals (getId (), employee.getId ()) && Objects.equals (getName (), employee.getName ());
+    }
+
+    @Override
+    public int hashCode () {
+        int result = Objects.hashCode (getId ());
+        result = 31 * result + Objects.hashCode (getName ());
+        return result;
+    }
+
+    @Override
+    public String toString () {
+        return "Employee{" +
+               "id=" + getId () +
+               ", name='" + getName () + '\'' +
+               '}';
     }
 }

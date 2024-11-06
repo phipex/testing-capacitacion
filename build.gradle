@@ -30,4 +30,63 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	reports.html.enabled = false
+	ignoreFailures true
+	testLogging {
+        events 'FAILED', 'SKIPPED'
+		outputs.upToDateWhen {false}
+        showStandardStreams = true
+    }
+}
+
+task domainTest(type: Test) {
+	useJUnitPlatform()
+//	exclude "**/*IT*", "**/*IntTest*"
+	group = "verification"
+	testLogging {
+		events 'FAILED', 'SKIPPED'
+		outputs.upToDateWhen {false}
+        showStandardStreams = true
+	}
+	ignoreFailures true
+	reports.html.enabled = true
+
+	filter {
+
+		//include all tests from package
+		includeTestsMatching "co.com.ies.cap.domain.core.*"
+
+
+	}
+	beforeTest { descriptor ->
+		print(descriptor)
+		logger.lifecycle("Running test: $descriptor.className")
+	}
+}
+
+task noDomainTest(type: Test) {
+	useJUnitPlatform()
+	//exclude "**/*IT*", "**/*IntTest*"
+	group = "verification"
+	testLogging {
+		events 'FAILED', 'SKIPPED'
+		outputs.upToDateWhen {false}
+        showStandardStreams = true
+	}
+	jvmArgs += '-Djava.security.egd=file:/dev/./urandom -Xmx256m'
+	// uncomment if the tests reports are not generated
+	// see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
+	ignoreFailures true
+	reports.html.enabled = true
+
+	filter {
+
+		//include all tests from package
+		excludeTestsMatching "co.com.ies.cap.domain.core.*"
+
+
+	}
+	beforeTest { descriptor ->
+		logger.lifecycle("Running test: $descriptor.className")
+	}
 }
